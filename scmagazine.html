@@ -64,6 +64,64 @@
       <li>Drink 8 glasses of water, get active and make friends: These three things will boost your mood and motivation and your bones will get stronger and you will be smarter and have a lot of support.</li>
       <li>Ask your parents to send you to courses to get productive: Taking a course can be an amazing thing and you'll have a community and hobby.</li>
     </ul>
+    <div class="star-rating">
+      <h2>Rate this product</h2>
+      <div class="stars">
+        <button class="star-btn" data-rating="1">
+          <i class="fa fa-star-o"></i>
+        </button>
+        <button class="star-btn" data-rating="2">
+          <i class="fa fa-star-o"></i>
+        </button>
+        <button class="star-btn" data-rating="3">
+          <i class="fa fa-star-o"></i>
+        </button>
+        <button class="star-btn" data-rating="4">
+          <i class="fa fa-star-o"></i>
+        </button>
+        <button class="star-btn" data-rating="5">
+          <i class="fa fa-star-o"></i>
+        </button>
+      </div>
+      <p class="rating-text">Click on the stars to rate</p>
+    </div>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const starButtons = document.querySelectorAll('.star-btn');
+      const ratingText = document.querySelector('.rating-text');
+      let currentRating = 0;
+
+      starButtons.forEach((button) => {
+        button.addEventListener('click', function () {
+          const rating = parseInt(this.getAttribute('data-rating'));
+          currentRating = rating;
+
+          starButtons.forEach((btn) => {
+            btn.classList.remove('active');
+            btn.querySelector('i').className = 'fa fa-star-o';
+          });
+
+          for (let i = 0; i < rating; i++) {
+            starButtons[i].classList.add('active');
+            starButtons[i].querySelector('i').className =
+              'fa fa-star';
+          }
+
+          const messages = [
+            'Click on the stars to rate',
+            'Terrible',
+            'Poor',
+            'Fair',
+            'Good',
+            'Excellent',
+          ];
+
+          ratingText.textContent = messages[rating];
+        });
+      });
+    });
+  </script>
     <a
       href="https://api.whatsapp.com/send?phone=5516581556&text=Bir%21%0D%0AI+sorum+var"
       class="float-button"
